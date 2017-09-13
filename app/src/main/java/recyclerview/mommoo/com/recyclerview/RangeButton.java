@@ -9,15 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 /**
  * Created by yonghak kang on 2017-09-03.
  */
 
-public class RangeButton extends LinearLayout {
+public class RangeButton extends LinearLayout implements View.OnClickListener {
 
     private Button leftButton;
     private Button rightButton;
@@ -77,6 +74,22 @@ public class RangeButton extends LinearLayout {
         leftButton = (Button)findViewById(R.id.comRangeBtnLeft);
         rightButton = (Button)findViewById(R.id.comRangeButtonRight);
         periodButton = (Button)findViewById(R.id.comRangePeriod);
+        periodButton.setOnClickListener(this);
 
     }
+
+   @Override
+   public void onClick(View v){
+      setSideButtonVisible(true);
+
+   }
+
+   public void setSideButtonVisible(boolean visible){
+
+    int visibleState = (visible)?VISIBLE:GONE;
+    leftButton.setVisibility(visibleState);
+    rightButton.setVisibility(visibleState);
+
+   }
+
 }

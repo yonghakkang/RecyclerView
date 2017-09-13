@@ -1,19 +1,19 @@
 package recyclerview.mommoo.com.recyclerview;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 /**
  * Created by yonghak kang on 2017-09-06.
  */
 
-public class RangeButtonGroup extends LinearLayout {
+public class RangeButtonGroup extends LinearLayout implements View.OnClickListener{
+    public LinearLayout container;
+    public RangeButton[] children;
     public RangeButtonGroup(Context context) {
         super(context);
         initLayout(context);
@@ -66,5 +66,28 @@ public class RangeButtonGroup extends LinearLayout {
         View view = inflater.inflate(R.layout.com_range_button_group, this);
 
 
+        container = (LinearLayout) this.getChildAt(0);
+
+        int  count  =container.getChildCount();
+        children = new RangeButton[count];
+        for(int i = 0; i < count ; i++){
+          children[i] =(RangeButton) container.getChildAt(i);
+          children[i].setOnClickListener(this);
+        }
+
+
+    }
+
+    @Override
+    public void onClick(View v){
+       RangeButton selectedButton = (RangeButton) v;
+       int  count  =children.length;
+       for(int i = 0; i < count ; i++){
+         if(selectedButton == children[i] ){
+
+         }else{
+          children[i].setSideButtonVisible(false);
+         }
+       }
     }
 }
