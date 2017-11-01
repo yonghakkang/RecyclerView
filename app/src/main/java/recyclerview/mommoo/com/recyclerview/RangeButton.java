@@ -42,6 +42,7 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
 
     }
 
+
     private void initAttribute(Context context, @Nullable AttributeSet attrs, int defStyleAttr){
 
         if(attrs != null){
@@ -64,6 +65,12 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
         }
 
     }
+
+
+    public Button getPeriodButton() {
+        return periodButton;
+    }
+
     private void initLayout(Context context){
 
         LayoutInflater inflater = (LayoutInflater)
@@ -81,7 +88,6 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
    @Override
    public void onClick(View v){
       setSideButtonVisible(true);
-
    }
 
    public void setSideButtonVisible(boolean visible){
