@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/recyclerview.mommoo.com.recyclerview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/comRangeBtnLeft">
-    <recyclerview.mommoo.com.recyclerview.RangeButton android:layout_height="wrap_content"  android:layout_width="wrap_content" android:layout_weight="0.2">
-
+    <recyclerview.mommoo.com.recyclerview.RangeButton custom:type="day" custom:label="today" android:layout_height="wrap_content"  android:layout_width="wrap_content" android:layout_weight="0.2">
     </recyclerview.mommoo.com.recyclerview.RangeButton>
-    <recyclerview.mommoo.com.recyclerview.RangeButton android:layout_height="wrap_content"  android:layout_width="wrap_content" android:layout_weight="0.2">
 
+    <recyclerview.mommoo.com.recyclerview.RangeButton custom:type="week" custom:label="W06" android:layout_height="wrap_content"  android:layout_width="wrap_content" android:layout_weight="0.2">
     </recyclerview.mommoo.com.recyclerview.RangeButton>
-    <recyclerview.mommoo.com.recyclerview.RangeButton android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="0.2">
 
+    <recyclerview.mommoo.com.recyclerview.RangeButton custom:type="month" custom:label="JUL" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="0.2">
     </recyclerview.mommoo.com.recyclerview.RangeButton>
-    <recyclerview.mommoo.com.recyclerview.RangeButton android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="0.2">
 
+    <recyclerview.mommoo.com.recyclerview.RangeButton custom:type="quarter" custom:label="Q1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="0.2">
     </recyclerview.mommoo.com.recyclerview.RangeButton>
-    <recyclerview.mommoo.com.recyclerview.RangeButton android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="0.2">
 
+    <recyclerview.mommoo.com.recyclerview.RangeButton custom:type="year" custom:label="2018" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="0.2">
     </recyclerview.mommoo.com.recyclerview.RangeButton>
 
 </LinearLayout>

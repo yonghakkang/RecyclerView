@@ -2,5 +2,13 @@
 <resources>
 <declare-styleable name="RangeButton">
     <attr name="visibleDirectionbuttons" format="boolean"/>
+    <attr name="label" format="string"/>
+    <attr name="type" format="enum">
+        <enum name="day" value="0" />
+        <enum name="week" value="1" />
+        <enum name="month" value="2" />
+        <enum name="quarter" value="3" />
+        <enum name="year" value="4" />
+    </attr>
 </declare-styleable>
 </resources>
