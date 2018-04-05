@@ -56,9 +56,34 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
 
     }
 
+    public String getWeek(){
+        Date _date = new Date();
+        Calendar _calendar = Calendar. getInstance();
+        _calendar.setTime(_date);
+
+        int _month = _calendar.get(Calendar.MONTH)+1;
+        int _dayOfWeek = _calendar.get(Calendar.DAY_OF_WEEK);
+        int _dayOfWeekInMonth = _calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH);
+
+        String[] engNumbers = new String[]{"th","st","nd"};
+        String strMonth = Integer.toString(_month);
+        String strDayOfWeek = Integer.toString(_dayOfWeek);
+        String strDayOfWeekInMonth = (_dayOfWeekInMonth<=2)?Integer.toString(_dayOfWeekInMonth)+engNumbers[_dayOfWeekInMonth]:Integer.toString(_dayOfWeekInMonth)+engNumbers[0];
+
+
+        return (strMonth)+"/"+strDayOfWeekInMonth;
+
+    }
+
     public String getDay() {
         DateFormat df = new DateFormat();
+
+        Date _date = new Date();
+        Calendar _calendar = Calendar. getInstance();
+        _calendar.setTime(_date);
+
         String _day = df.format("yyyy-MM/dd", new java.util.Date()).toString();
+
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM/dd");
@@ -73,6 +98,64 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
 
         return null;
 
+
+    }
+    public String getMonth() {
+        DateFormat df = new DateFormat();
+
+        Date _date = new Date();
+        Calendar _calendar = Calendar. getInstance();
+        _calendar.setTime(_date);
+
+        String _month = df.format("MMM", new java.util.Date()).toString();
+
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM");
+            Calendar c = Calendar.getInstance();
+            c.setTime(sdf.parse(_month));
+            c.add(Calendar.MONTH, this.increase);  // number of Month to add
+            _month = sdf.format(c.getTime());
+            return _month;
+        }catch (ParseException e ){
+            e.getMessage();
+        }
+
+        return null;
+
+
+    }
+
+    public String getQuarter() {
+        DateFormat df = new DateFormat();
+
+
+        Date _date = new Date();
+
+        Calendar _calendar = Calendar. getInstance();
+        _calendar.setTime(_date);
+        
+        int _courrentYear = _calendar.get(Calendar.YEAR);
+
+        String _month = df.format("M", new java.util.Date()).toString();
+
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("M");
+        Calendar c = Calendar.getInstance();
+        c.setTime(_date);
+        c.add(Calendar.MONTH, this.increase*3);  // number of Month to add
+
+        int newYear = c.get(Calendar.YEAR);
+
+        _month = sdf.format(c.getTime());
+        int quarter = (Integer.parseInt(_month) / 3) + 1;
+
+        if(newYear !=_courrentYear){
+            return newYear+" Q"+ String.valueOf(quarter);
+        }else{
+            return "Q"+ String.valueOf(quarter);
+        }
 
     }
 
@@ -91,7 +174,7 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
 
                 leftButton.setVisibility((visible)?VISIBLE:GONE);
                 rightButton.setVisibility((visible)?VISIBLE:GONE);
-                periodButton.setText(getDay());
+                periodButton.setText(getWeek());
 
             } finally {
                 ta.recycle();
@@ -135,12 +218,12 @@ public class RangeButton extends LinearLayout implements View.OnClickListener {
 
             //int value = Integer.parseInt((String)periodButton.getText());
             //periodButton.setText(String.valueOf(--value));
-            periodButton.setText(getDay());
+            periodButton.setText(getQuarter());
         }else if(v == rightButton){
             this.increase++;
             //int value = Integer.parseInt((String)periodButton.getText());
             //periodButton.setText(String.valueOf(++value));
-            periodButton.setText(getDay());
+            periodButton.setText(getQuarter());
         }
 
    }
